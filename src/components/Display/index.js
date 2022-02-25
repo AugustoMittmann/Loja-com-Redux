@@ -1,21 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Display = ( produtoAtivo ) => (
+function buyProduto( carrinho ) {
+  return {
+    type: 'BUY_PRODUTO',
+    carrinho,
+  };
+}
+
+const Display = ({ produtoAtivo, dispatch, carrinho }) => (
   <div className='informacoes'>
     <div className='titulo'>
-      <strong>{produtoAtivo.produtoAtivo.nome}</strong>
+      <strong>{produtoAtivo.nome}</strong>
     </div>
     <div className='preco'>
-      <span>R${produtoAtivo.produtoAtivo.preco}</span>
+      <span>R${produtoAtivo.preco}</span>
     </div>
     <div className='cor'>
-      <span>Cor {produtoAtivo.produtoAtivo.cor}</span>
+      <span>Cor {produtoAtivo.cor}</span>
+      <button onClick={() => dispatch(buyProduto(carrinho))}>comprar</button>
     </div>
-    <img className='imagem' src={produtoAtivo.produtoAtivo.link}/>
+    <img className='imagem' src={produtoAtivo.link}/>
   </div>
 )
 
 export default connect(state => ({
-  produtoAtivo: state.produtoAtivo
+  produtoAtivo: state.produtoAtivo,
+  carrinho: state.carrinho
 }))(Display);

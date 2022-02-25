@@ -1,7 +1,21 @@
 import { createStore } from 'redux';
 
 const estadoInicial = {
-  produtoAtivo: {},
+  produtoAtivo: 
+    {
+      id:0, 
+      nome: 'Lápis',
+      preco: 1.20, 
+      cor: 'Preto',
+      link: 'https://www.gimba.com.br/objetosmidia/ExibirObjetoMidia?id=77751'
+    },
+  carrinho: {
+    id:0, 
+    nome: 'Lápis',
+    preco: 1.20, 
+    cor: 'Preto',
+    link: 'https://www.gimba.com.br/objetosmidia/ExibirObjetoMidia?id=77751'
+  },
   produtos: [
     {
       id:0, 
@@ -30,6 +44,10 @@ const estadoInicial = {
 function reducer(state = estadoInicial, action) {
   if(action.type === 'SET_PRODUTO') {
     return {...state, produtoAtivo: action.produtos }
+  }
+  if(action.type === 'BUY_PRODUTO') {
+    console.log('eee');
+    return {...state, carrinho: action.produtos }
   }
   return state
 }

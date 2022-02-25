@@ -20,4 +20,7 @@ const Produtos = ({ produtos, dispatch }) => (
   </div>
 )
 
-export default connect(state => ({ produtos: state.produtos }))(Produtos);
+export default connect(state => ({ 
+  produtos: state.produtos,
+  carrinho: state.carrinho
+ }))(Produtos);

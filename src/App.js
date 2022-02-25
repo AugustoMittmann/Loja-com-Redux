@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 
 import Display from './components/Display';
 import Produtos from './components/Produtos';
+import Carrinho from './components/Carrinho';
 
 import store from './store';
 
@@ -15,6 +16,7 @@ class App extends Component {
         <Provider store={store}>
           <Produtos />
           <Display />
+          <Carrinho />
         </Provider>
       </div>
     );
